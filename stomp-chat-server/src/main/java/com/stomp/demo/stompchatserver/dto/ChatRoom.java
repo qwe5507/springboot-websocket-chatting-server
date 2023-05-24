@@ -1,4 +1,4 @@
-package com.stomp.demo.dto;
+package com.stomp.demo.stompchatserver.dto;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -1,6 +1,6 @@
-package com.stomp.demo.repository;
+package com.stomp.demo.stompchatserver.repository;
 
-import com.stomp.demo.dto.ChatRoom;
+import com.stomp.demo.stompchatserver.dto.ChatRoom;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.PostConstruct;

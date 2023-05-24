@@ -1,6 +1,6 @@
-package com.stomp.demo.controller;
+package com.stomp.demo.stompchatserver.controller;
 
-import com.stomp.demo.dto.ChatMessage;
+import com.stomp.demo.stompchatserver.dto.ChatMessage;
 import lombok.RequiredArgsConstructor;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.simp.SimpMessageSendingOperations;
@@ -14,7 +14,7 @@ public class ChatController {
 
     @MessageMapping("/chat/message")
     public void message(ChatMessage message) {
-        if (ChatMessage.MessageType.JOIN.equals(message.getType())) {
+        if (ChatMessage.MessageType.ENTER.equals(message.getType())) {
             message.setMessage(message.getSender() + "님이 입장하셨습니다.");
         }
 

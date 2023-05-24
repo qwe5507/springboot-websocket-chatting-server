@@ -1,4 +1,4 @@
-package com.stomp.demo.config;
+package com.stomp.demo.stompchatserver.config;
 
 
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +19,7 @@ public class WebSockConfig implements WebSocketMessageBrokerConfigurer {
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/ws-stomp").setAllowedOrigins("*")
+        registry.addEndpoint("/ws-stomp").setAllowedOriginPatterns("*")
                 .withSockJS();
     }
 }

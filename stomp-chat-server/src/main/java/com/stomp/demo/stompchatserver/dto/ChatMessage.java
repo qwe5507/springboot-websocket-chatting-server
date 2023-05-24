@@ -1,4 +1,4 @@
-package com.stomp.demo.dto;
+package com.stomp.demo.stompchatserver.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,7 +8,7 @@ import lombok.Setter;
 public class ChatMessage {
     // 메시지 타입 : 입장, 채팅
     public enum MessageType {
-        JOIN, TALK
+        ENTER, TALK
     }
     private MessageType type; // 메시지 타입
     private String roomId; // 방번호
