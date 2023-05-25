@@ -12,8 +12,8 @@ import javax.annotation.PreDestroy;
 @Configuration
 public class EmbeddedRedisConfig {
 
-    @Value("${spring.redis.port}")
-    private int redisPort;
+//    @Value("${spring.redis.port}")
+    private int redisPort = 6379;
 
     private RedisServer redisServer;
 
