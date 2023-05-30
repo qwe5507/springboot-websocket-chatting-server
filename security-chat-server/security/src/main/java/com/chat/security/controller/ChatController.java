@@ -2,6 +2,7 @@ package com.chat.security.controller;
 
 import com.chat.security.dto.ChatMessage;
 import com.chat.security.service.JwtTokenProvider;
+import com.chat.security.service.JwtTokenProviderOld;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
@@ -24,6 +25,7 @@ public class ChatController {
      */
     @MessageMapping("/chat/message")
     public void message(ChatMessage message, @Header("token") String token) {
+        log.info("ChatController message() 호출");
         String nickname = jwtTokenProvider.getUserNameFromJwt(token);
         // 로그인 회원 정보로 대화명 설정
         message.setSender(nickname);
