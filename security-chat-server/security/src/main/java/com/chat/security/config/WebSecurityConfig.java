@@ -1,0 +1,58 @@
+package com.chat.security.config;
+
+import
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.config.annotation.web.builders.HttpSecurity;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.provisioning.InMemoryUserDetailsManager;
+import org.springframework.security.web.SecurityFilterChain;
+
+@Configuration
+public class WebSecurityConfig {
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf().disable();
+        http.headers().frameOptions().sameOrigin() // SockJS는 기본적으로 HTML iframe 요소를 통한 전송을 허용하지 않도록 설정되는데 해당 내용을 해제한다.
+                .and()
+                .formLogin() // 권한없이 페이지 접근하면 로그인 페이지로 이동한다.
+                .and()
+                .authorizeRequests()
+                .antMatchers("/chat/**").hasRole("USER") // chat으로 시작하는 리소스에 대한 접근 권한 설정
+                .anyRequest().permitAll();
+
+        return http.build();
+    }
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
+        userDetailsManager.createUser(User.withUsername("happydaddy")
+                .password(passwordEncoder.encode("1234"))
+                .roles("USER")
+                .build());
+        userDetailsManager.createUser(User.withUsername("angrydaddy")
+                .password(passwordEncoder.encode("1234"))
+                .roles("USER")
+                .build());
+        userDetailsManager.createUser(User.withUsername("guest")
+                .password(passwordEncoder.encode("1234"))
+                .roles("GUEST")
+                .build());
+        return userDetailsManager;
+    }
+
+    @Bean
+    public AuthenticationManager authenticationManagerBean(HttpSecurity http) throws Exception {
+        return http.getSharedObject(AuthenticationManager.class);
+    }
+
+}
