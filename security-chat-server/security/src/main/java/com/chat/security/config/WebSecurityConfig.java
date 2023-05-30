@@ -1,23 +1,25 @@
 package com.chat.security.config;
 
-import
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.stereotype.Component;
 
+@Component
 @Configuration
 public class WebSecurityConfig {
 
-    @Autowired
-    private PasswordEncoder passwordEncoder;
 
+    @Bean
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.csrf().disable();
@@ -34,17 +36,19 @@ public class WebSecurityConfig {
 
     @Bean
     public UserDetailsService userDetailsService() {
+        BCryptPasswordEncoder bCryptPasswordEncoder = passwordEncoder();
+
         InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
         userDetailsManager.createUser(User.withUsername("happydaddy")
-                .password(passwordEncoder.encode("1234"))
+                .password(bCryptPasswordEncoder.encode("1234"))
                 .roles("USER")
                 .build());
         userDetailsManager.createUser(User.withUsername("angrydaddy")
-                .password(passwordEncoder.encode("1234"))
+                .password(bCryptPasswordEncoder.encode("1234"))
                 .roles("USER")
                 .build());
         userDetailsManager.createUser(User.withUsername("guest")
-                .password(passwordEncoder.encode("1234"))
+                .password(bCryptPasswordEncoder.encode("1234"))
                 .roles("GUEST")
                 .build());
         return userDetailsManager;

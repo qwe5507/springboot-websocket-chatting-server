@@ -1,5 +1,7 @@
 package com.chat.security.controller;
 
+import com.chat.security.dto.ChatRoom;
+import com.chat.security.repository.ChatRoomRepository;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
