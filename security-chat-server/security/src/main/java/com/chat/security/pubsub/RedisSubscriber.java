@@ -27,6 +27,7 @@ public class RedisSubscriber {
             // ChatMessage 객채로 맵핑
             ChatMessage chatMessage = objectMapper.readValue(publishMessage, ChatMessage.class);
             // 채팅방을 구독한 클라이언트에게 메시지 발송
+            // redis의 구독자가 아닌 websocket을 통한 stomp프로토콜의 구독자를 뜻한다.
             messagingTemplate.convertAndSend("/sub/chat/room/" + chatMessage.getRoomId(), chatMessage);
         } catch (Exception e) {
             log.error("Exception {}", e);
