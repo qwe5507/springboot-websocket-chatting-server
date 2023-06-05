@@ -1,6 +1,6 @@
 package com.chat.developchatserver.repository;
 
-import com.chat.security.dto.ChatRoom;
+import com.chat.developchatserver.dto.ChatRoom;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.HashOperations;
 import org.springframework.data.redis.core.RedisTemplate;

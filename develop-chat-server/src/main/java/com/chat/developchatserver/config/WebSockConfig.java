@@ -1,7 +1,7 @@
 package com.chat.developchatserver.config;
 
 
-import com.chat.security.config.handler.StompHandler;
+import com.chat.developchatserver.config.handler.StompHandler;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.ChannelRegistration;

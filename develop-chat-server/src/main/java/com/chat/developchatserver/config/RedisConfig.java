@@ -1,6 +1,6 @@
 package com.chat.developchatserver.config;
 
-import com.chat.security.pubsub.RedisSubscriber;
+import com.chat.developchatserver.pubsub.RedisSubscriber;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.RedisConnectionFactory;

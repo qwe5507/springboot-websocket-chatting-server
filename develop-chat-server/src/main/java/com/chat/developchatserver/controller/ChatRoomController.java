@@ -1,9 +1,9 @@
 package com.chat.developchatserver.controller;
 
-import com.chat.security.dto.ChatRoom;
-import com.chat.security.dto.LoginInfo;
-import com.chat.security.repository.ChatRoomRepository;
-import com.chat.security.service.JwtTokenProvider;
+import com.chat.developchatserver.dto.ChatRoom;
+import com.chat.developchatserver.dto.LoginInfo;
+import com.chat.developchatserver.repository.ChatRoomRepository;
+import com.chat.developchatserver.service.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.Authentication;

@@ -1,7 +1,7 @@
 package com.chat.developchatserver.controller;
 
-import com.chat.security.dto.ChatMessage;
-import com.chat.security.service.JwtTokenProvider;
+import com.chat.developchatserver.dto.ChatMessage;
+import com.chat.developchatserver.service.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.RedisTemplate;
