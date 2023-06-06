@@ -41,11 +41,11 @@ public class WebSecurityConfig {
         BCryptPasswordEncoder bCryptPasswordEncoder = passwordEncoder();
 
         InMemoryUserDetailsManager userDetailsManager = new InMemoryUserDetailsManager();
-        userDetailsManager.createUser(User.withUsername("happydaddy")
+        userDetailsManager.createUser(User.withUsername("test")
                 .password(bCryptPasswordEncoder.encode("1234"))
                 .roles("USER")
                 .build());
-        userDetailsManager.createUser(User.withUsername("angrydaddy")
+        userDetailsManager.createUser(User.withUsername("tes")
                 .password(bCryptPasswordEncoder.encode("1234"))
                 .roles("USER")
                 .build());

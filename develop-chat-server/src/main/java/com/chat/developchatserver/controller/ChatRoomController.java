@@ -1,7 +1,7 @@
 package com.chat.developchatserver.controller;
 
-import com.chat.developchatserver.dto.ChatRoom;
-import com.chat.developchatserver.dto.LoginInfo;
+import com.chat.developchatserver.model.ChatRoom;
+import com.chat.developchatserver.model.LoginInfo;
 import com.chat.developchatserver.repository.ChatRoomRepository;
 import com.chat.developchatserver.service.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
@@ -26,7 +26,6 @@ public class ChatRoomController {
     // 채팅 리스트 화면
     @GetMapping("/room")
     public String rooms(Model model) {
-        log.info("asd");
         return "chat/room";
     }
 

@@ -1,7 +1,7 @@
 package com.chat.developchatserver.service;
 
 
-import com.chat.developchatserver.dto.ChatMessage;
+import com.chat.developchatserver.model.ChatMessage;
 import com.chat.developchatserver.repository.ChatRoomRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.redis.core.RedisTemplate;
