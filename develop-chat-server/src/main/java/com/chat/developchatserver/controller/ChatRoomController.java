@@ -30,13 +30,6 @@ public class ChatRoomController {
         return "chat/room";
     }
 
-    // 모든 채팅방 목록 반환
-    @GetMapping("/rooms")
-    @ResponseBody
-    public List<ChatRoom> room() {
-        return chatRoomRepository.findAllRoom();
-    }
-
     // 채팅방 생성
     @PostMapping("/room")
     @ResponseBody
@@ -64,5 +57,13 @@ public class ChatRoomController {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         String name = auth.getName();
         return LoginInfo.builder().name(name).token(jwtTokenProvider.generateToken(name)).build();
+    }
+
+    @GetMapping("/rooms")
+    @ResponseBody
+    public List<ChatRoom> room() {
+        List<ChatRoom> chatRooms = chatRoomRepository.findAllRoom();
+        chatRooms.stream().forEach(room -> room.setUserCount(chatRoomRepository.getUserCount(room.getRoomId())));
+        return chatRooms;
     }
 }
