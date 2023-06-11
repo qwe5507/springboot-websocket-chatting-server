@@ -21,8 +21,10 @@ dependencies {
     implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     //embedded-redis
     implementation group: 'it.ozimov', name: 'embedded-redis', version: '0.7.2'
+
     // Lombok 의존성 추가
-    implementation 'org.projectlombok:lombok:1.18.20'
+    compileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok'
 
     implementation 'org.webjars.bower:bootstrap:4.3.1'
     implementation 'org.webjars.bower:vue:2.5.16'
